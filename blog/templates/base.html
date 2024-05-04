@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'component/common_css.html' %}
+
+    <title>
+        {% block page_title %}{% endblock %}
+    </title>
+
+    {% block page_specific_css %}{% endblock %}
+
+</head>
+
+<body>
+
+    {% include 'component/top_navbar.html' %}
+
+    <main>
+        {% block main_content %}{% endblock %}
+    </main>
+
+    {% include 'component/footer.html' %}
+   
+    <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+
+    {% include 'component/common_script.html' %}
+
+    {% block page_specific_script %}{% endblock %}
+
+</body>
+
+</html>

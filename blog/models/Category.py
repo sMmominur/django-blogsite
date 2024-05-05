@@ -10,6 +10,7 @@ class Category(UserStampedModel, TimeStampedModel):
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, unique=True, blank=True)
     status = models.CharField(max_length=10, choices=CATEGORY_STATUSES, default='Active')
+    category_img = models.ImageField(upload_to='media/category_img', blank=True, null=True,verbose_name='Category Image')
     
     def __str__(self):
         return self.name

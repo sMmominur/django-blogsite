@@ -1,16 +1,20 @@
 from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseNotFound,HttpResponseServerError
-import datetime
-from .models import Category
-# Create your views here.
+from django.http import JsonResponse
+from blog.services.category_service import CategoryService
+from django.core import serializers
+
 def home_page(request):
-    return render(request,'home.html')
-    #return HttpResponseNotFound(render(request,'../error/404.html'))
-def show_404_error_page(request):
-    return render(request, 'error/404.html')
+    try:
+        active_categories = CategoryService.get_active_categories()
+    except Exception as e:
+        print(f"Error occurred while fetching active categories: {e}")
+        return render(request,'error/500.html')
+    
+    return render(request, 'home.html', {'active_categories': active_categories})
+    
 
-def show_500_error_page(request):
-    return render(request,'error/500.html')
-
-   
+def fetch_category(request):
+    active_categories = CategoryService.get_active_categories()
+    categories_json = serializers.serialize('json', active_categories)
+    return JsonResponse(categories_json, safe=False)
     

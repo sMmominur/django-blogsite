@@ -6,14 +6,14 @@ from .models import Category, Post, Tag, Comment
 from .mixins.author_mixin import AuthorMixin
 
 class CategoryAdmin(AuthorMixin):
-    list_display = ('name', 'slug', 'status')
+    list_display = ('category_id','name', 'slug', 'status')
     list_display_links = ('name',)
     search_fields = ('name', 'slug')
     list_filter = ('status', 'created_by')
     prepopulated_fields = {'slug': ('name',)}
     list_per_page = 10
     actions_on_top = True 
-    fields = ('name', 'slug', 'status')
+    fields = ('name', 'slug', 'status','category_img')
     actions = ['make_active', 'make_inactive', 'make_draft', 'delete_selected', 'edit_selected', 'select_all']
 
     def make_active(self, request, queryset):

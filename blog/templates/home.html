@@ -379,13 +379,13 @@ Trending topics START -->
 			<div class="col-12 bg-light p-2 p-sm-4 rounded-3">
 				<!-- Title -->
 				<div class="d-sm-flex justify-content-between align-items-center mb-4">
-					<h2 class="m-0">Trending topics</h2>
+					<h2 class="m-0">Trending Categories</h2>
 					<a href="#" class="text-body text-primary-hover"><u>View all categories</u></a>
 				</div>
 				<!-- Slider -->
 				<div class="tiny-slider arrow-hover arrow-dark arrow-blur arrow-round">
 					<div class="tiny-slider-inner"
-					data-autoplay="false"
+					data-autoplay="true"
 					data-hoverpause="true"
 					data-gutter="24"
 					data-arrow="true"
@@ -396,61 +396,21 @@ Trending topics START -->
 					data-items-sm="2" 
 					data-items-xs="2"
 					>
-						<!-- Category item -->
+					{% for category in active_categories %}
+						<!-- Category Item Start-->
 						<div>
 							<div class="card card-overlay-bottom card-img-scale">
-								<img class="card-img" src="{% static "images/category/01.jpg" %}" alt="card image">
+								<img class="card-img" src="{{ category.category_img }}" alt="{{category.slug}}-image">
 								<div class="card-img-overlay d-flex px-3 px-sm-5">
 									<h5 class="mt-auto mx-auto">
-										<a href="#" class="stretched-link btn-link fw-bold text-white">Travel</a>
+										<a href="#" class="stretched-link btn-link fw-bold text-white">{{category.name}}</a>
 									</h5>
 								</div>
 							</div>
 						</div>
-						<!-- Category item -->
-						<div>
-							<div class="card card-overlay-bottom card-img-scale">
-								<img class="card-img" src="{% static "images/category/02.jpg" %}" alt="card image">
-								<div class="card-img-overlay d-flex px-3 px-sm-5">
-									<h5 class="mt-auto mx-auto">
-										<a href="#" class="stretched-link btn-link fw-bold text-white">Business</a>
-									</h5>
-								</div>
-							</div>
-						</div>
-						<!-- Category item -->
-						<div>
-							<div class="card card-overlay-bottom card-img-scale">
-								<img class="card-img" src="{% static "images/category/03.jpg" %}" alt="card image">
-								<div class="card-img-overlay d-flex px-3 px-sm-5">
-									<h5 class="mt-auto mx-auto">
-										<a href="#" class="stretched-link btn-link fw-bold text-white">Marketing</a>
-									</h5>
-								</div>
-							</div>
-						</div>
-						<!-- Category item -->
-						<div>
-							<div class="card card-overlay-bottom card-img-scale">
-								<img class="card-img" src="{% static "images/category/04.jpg" %}" alt="card image">
-								<div class="card-img-overlay d-flex px-3 px-sm-5">
-									<h5 class="mt-auto mx-auto">
-										<a href="#" class="stretched-link btn-link fw-bold text-white">Photography</a>
-									</h5>
-								</div>
-							</div>
-						</div>
-						<!-- Category item -->
-						<div>
-							<div class="card card-overlay-bottom card-img-scale">
-								<img class="card-img" src="{% static "images/category/05.jpg" %}" alt="card image">
-								<div class="card-img-overlay d-flex px-3 px-sm-5">
-									<h5 class="mt-auto mx-auto">
-									<a href="#" class="stretched-link btn-link fw-bold text-white">Sports</a>
-									</h5>
-								</div>
-							</div>
-						</div>
+						<!-- Category Item End-->
+					{% endfor %}
+						
 					</div>
 				</div> <!-- Slider END -->
 			</div>

@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from blog.services.category_service import CategoryService
-from django.core import serializers
 
 def home_page(request):
     try:
@@ -12,9 +10,6 @@ def home_page(request):
     
     return render(request, 'home.html', {'active_categories': active_categories})
     
-
-def fetch_category(request):
-    active_categories = CategoryService.get_active_categories()
-    categories_json = serializers.serialize('json', active_categories)
-    return JsonResponse(categories_json, safe=False)
     
+#top highlights
+#Latest Articles
